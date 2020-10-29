@@ -1,0 +1,44 @@
+<form method="POST" action="/">
+    <div class="form-group">
+        <label for="item">Item</label>
+        <input type="text" class="form-control" id="item" name="item" placeholder="Please enter an item">
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" class="form-control" min="1" 
+        placeholder="Please enter the quantity">
+    </div>
+    <div class="form-group">
+        <label for="unitPrice">Unit price</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input type="number" name="unitPrice" id="unitPrice" class="form-control" 
+            step="0.01" placeholder="Please enter unit price">
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Add to cart</button>
+    </div>
+    <input type="hidden" name="cartState" value="{{ state }}">   
+</form>
+
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#each items}}
+        <tr>
+            <td>{{this.item}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.unitPrice}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
